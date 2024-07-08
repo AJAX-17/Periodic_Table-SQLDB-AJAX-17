@@ -1,16 +1,7 @@
 #!/bin/bash
 PSQL="psql -X --username=freecodecamp --dbname=periodic_table --tuples-only -c"
 
-#CHECKING VALID INPUT -- IF GOOD INPUT THEN START INFO DUMP
-VALID_INPUT() {
-  if [[ -z $1 ]]
-  then
-    echo "Please provide an element as an argument."
-  else
-    INFO_DUMP $1
-  fi
-}
-
+#GETTING OUTPUT FOR CORRECT INPUT
 INFO_DUMP() {
   INPUT=$1
   if [[ ! $INPUT =~ ^[0-9]+$ ]]
@@ -35,3 +26,14 @@ INFO_DUMP() {
     echo "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $ATOMIC_MASS amu. $NAME has a melting point of $MELTING_POINT_CELSIUS celsius and a boiling point of $BOILING_POINT_CELSIUS celsius."
   fi
 }
+
+
+#CHECKING VALID INPUT -- IF GOOD INPUT THEN START INFO DUMP
+if [[ -z $1 ]]
+  then
+    echo "Please provide an element as an argument."
+  else
+    INFO_DUMP $1
+fi
+
+
